@@ -21,8 +21,13 @@ public class ProductViewModel extends ViewModel {
     public MutableLiveData<String> price = new MutableLiveData<>();
     public MutableLiveData<String> description = new MutableLiveData<>();
     public MutableLiveData<String> isFavorite = new MutableLiveData<>("no");
-    private MutableLiveData<Product> selectedProduct = new MutableLiveData<>(new Product("", "", "", "no"));
+    private MutableLiveData<Product> selectedProduct = new MutableLiveData<>(new Product("", "", "", "no",R.drawable.ic_image_default));
     private Application application;
+    public MutableLiveData<Integer> imageResource = new MutableLiveData<>(R.drawable.ic_image_default);
+
+    public void setSelectedImageResource(int resource) {
+        imageResource.setValue(resource);
+    }
 
     public void setApplication(Application application) {
         this.application = application;
@@ -50,11 +55,12 @@ public class ProductViewModel extends ViewModel {
         String productPrice = price.getValue();
         String productDescription = description.getValue();
         String favorite = isFavorite.getValue();
+        int imageResource = this.imageResource.getValue();
 
         if (productName != null && !productName.isEmpty() && productDescription != null && !productDescription.isEmpty() &&
                 productPrice != null && !productPrice.isEmpty()) {
 
-            Product newProduct = new Product(productName, productDescription, productPrice, favorite);
+            Product newProduct = new Product(productName, productDescription, productPrice, favorite, imageResource);
 
             List<Product> currentList = listProducts.getValue();
             if (currentList != null) {
@@ -65,11 +71,14 @@ public class ProductViewModel extends ViewModel {
             name.setValue("");
             price.setValue("");
             description.setValue("");
+            isFavorite.setValue("no");
+            this.imageResource.setValue(R.drawable.ic_image_default);
         }
     }
 
     public void updateSelectedProduct() {
         Product product = selectedProduct.getValue();
+        product.setImageResource(imageResource.getValue());
         Log.d(TAG, "updateSelectedProduct: " + product.toString());
         if (product != null) {
             repository.update(product);

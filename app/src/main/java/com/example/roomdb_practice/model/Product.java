@@ -14,14 +14,14 @@ public class Product  {
     private String description;
     private String price;
     private String isFavorite = "no";
-//    private int imageResource;
+    private int imageResource;
 
-    public Product(String name, String description, String price, String isFavorite) {
+    public Product(String name, String description, String price, String isFavorite, int imageResource) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.isFavorite = isFavorite;
-//        this.imageResource = imageResource;
+        this.imageResource = imageResource;
     }
 
     public String isFavorite() {
@@ -66,10 +66,10 @@ public class Product  {
         this.price = price;
     }
 
-//    public void setImageResource(int imageResource) {
-//        this.imageResource = imageResource;
-//    }
-//    public int getImageResource() {
-//        return imageResource;
-//    }
+    public void setImageResource(int imageResource) {
+        this.imageResource = imageResource;
+    }
+    public int getImageResource() {
+        return imageResource;
+    }
 }

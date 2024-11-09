@@ -42,11 +42,14 @@ public class ViewPagerFragment extends Fragment implements DetailFragment.OnFrag
     public void onReplaceFragmentToInputFragment() {
         Fragment inputFragment = new InputFragment();
         adapter.replaceFragment(inputFragment, "Input ", 1);
+        viewPager.setCurrentItem(1);
     }
 
     @Override
     public void onReplaceFragmentToDetailFragment() {
         Fragment detailFragment = new DetailFragment();
         adapter.replaceFragment(detailFragment, "Detail ", 1);
+        viewPager.setCurrentItem(1);
+
     }
 }

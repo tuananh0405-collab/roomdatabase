@@ -80,7 +80,7 @@
                     android:layout_width="200dp"
                     android:layout_height="200dp"
                     android:layout_marginTop="8dp"
-                    android:src="@drawable/ic_image_default"
+                    android:src="@{viewModel.imageResource}"
                     android:contentDescription="Product Image"
                     android:scaleType="centerCrop" />
             </LinearLayout>

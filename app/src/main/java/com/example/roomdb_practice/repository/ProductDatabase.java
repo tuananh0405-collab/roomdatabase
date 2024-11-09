@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 
 import com.example.roomdb_practice.model.Product;
 
-@Database(entities = {Product.class}, version = 1, exportSchema = false)
+@Database(entities = {Product.class}, version = 2, exportSchema = false)
 public abstract class ProductDatabase extends RoomDatabase {
 
     private static ProductDatabase instance;
